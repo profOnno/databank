@@ -20,17 +20,17 @@ var assert = require('assert'),
     vows = require('vows'),
     databank = require('../lib/databank'),
     Databank = databank.Databank,
-    MemoryDatabank = require('../lib/drivers/memory');
+    memory = require('../lib/drivers/memory');
 
 vows.describe('databank register').addBatch({
     'When we register a databank module': {
         topic: function() { 
-            Databank.register('memoryalias', MemoryDatabank);
+            Databank.register('memoryalias', memory);
             return Databank.get('memoryalias', {});
         },
         "we get back a good value": function(db) {
             assert.isObject(db);
-            assert.instanceOf(db, MemoryDatabank);
+            assert.instanceOf(db, Databank);
         }
     }
 }).export(module);
