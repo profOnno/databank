@@ -48,7 +48,8 @@ var types = [
     "task",
     "grape",
     "film",
-    "song"
+    "song",
+    "user"
 ];
     
 for (var i = 0; i < types.length; i++) {
