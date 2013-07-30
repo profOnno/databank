@@ -74,8 +74,8 @@ name. That's probably only a last resort, though.
 
 ## Built-in drivers
 
-The built-in drivers are documented in MEMORY.md, DISK.md, and
-CACHING.md, respectively.
+The built-in drivers are documented in MEMORY.md, CACHING.md, and
+PARTITIONING.md respectively.
 
 # Schemata
 
@@ -492,12 +492,6 @@ Called before `create()`. A chance to add default values
 or validate. `callback` takes two args: an err, or the (possibly
 modified) props.
 
-* `beforeGet(id, callback)`
-
-Called before `create()`. I don't see a lot of reason to mess with
-this, but it's here if you need it. `callback` takes two args: an err,
-or the (possibly modified) id.
-
 Instance methods:
 
 * `afterCreate(callback)`
@@ -505,10 +499,18 @@ Instance methods:
 Called after `create()`. Good chance to save references. `callback`
 takes one arg: an err.
 
+* `beforeGet(id, callback)`
+
+Called before `get()`. I don't see a lot of reason to mess with
+this, but it's here if you need it. `callback` takes two args: an err,
+or the (possibly modified) id.
+
 * `afterGet(callback)`
 
 Called after `get()`. Good chance to expand references. `callback`
 takes one arg: an err.
+
+This is also called once for each instance returned in `readAll()`.
 
 * `beforeUpdate(props, callback)`
 
