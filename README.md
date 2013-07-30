@@ -41,13 +41,14 @@ The point of the Databank interface is so applications can use one
 interface for developing persistence code, and then at deployment time
 you can decide what driver to use.
 
-There are two drivers included in this package: 'memory' and
-'caching'. The first is great for development but pretty bad for
-production.
+There are three drivers included in this package: 'memory',
+'partitioning', and 'caching'. The first is great for development but
+pretty bad for production.
 
 There are a few drivers not in this package. You can search for them
 on npm; they all start with 'databank-'. So, 'databank-leveldb',
-'databank-mongodb', 'databank-memcached', 'databank-redis'.
+'databank-mongodb', 'databank-memcached', 'databank-redis',
+'databank-disk'.
 
 ## Installation
 
@@ -545,4 +546,3 @@ TODO
 ----
 
 See https://github.com/e14n/databank/issues
-
