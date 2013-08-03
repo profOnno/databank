@@ -50,7 +50,8 @@ var types = [
     "film",
     "song",
     "user",
-    "bird"
+    "bird",
+    "tree"
 ];
     
 for (var i = 0; i < types.length; i++) {
