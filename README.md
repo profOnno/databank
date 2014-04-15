@@ -21,7 +21,7 @@ mostly it just works.
 
 # License
 
-Copyright 2011-2013 E14N https://e14n.com/
+Copyright 2011-2014 E14N https://e14n.com/
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -59,14 +59,14 @@ At deployment time, if you want to use a particular driver, it's going
 to need to be available to the 'databank' libraries so that
 `Databank.get()` can find it. This means you have two options:
 
-* Install the driver globally, like `npm install -g databank-redis`. This is 
+* Install the driver globally, like `npm install -g databank-redis`. This is
   probably OK as long as you don't have version conflicts between apps.
 * Install the driver in the `databank` dir, like so:
 
     npm install databank
-    
+
     cd node_modules/databank/
-    
+
     npm install databank-redis
 
 If you're still stuck, there's a `Databank.register()` method that
@@ -126,7 +126,7 @@ The class has a static method for for initializing an instance:
         if (err) {
             console.log("Couldn't connect to databank: " + err.message);
         } else {
-            // ...                
+            // ...
         }
     });
 
@@ -138,7 +138,7 @@ There's another static method to change how `get()` works:
    useful if for some reason your driver class isn't exported by the
    `databank-driver` package somewhere. (I mainly use this for
    unit-testing drivers.)
-   
+
 The databank interface has these methods:
 
 * `connect(params, onCompletion)`
@@ -221,11 +221,11 @@ The databank interface has these methods:
   property names to exact value matches. `onResult` is called one time
   for each result, with a single argument, the object that matches the
   criteria. Use a collector array if you want all the results in an array.
-  
+
   Property names can be dotted to indicate deeper structures; for
   example, this object:
-  
-	{name: {last: "Prodromou", first: "Evan"}, age: 43}
+
+    {name: {last: "Prodromou", first: "Evan"}, age: 43}
 
   would match the criteria `{"name.last": "Prodromou"}`.
 
@@ -246,7 +246,7 @@ The databank interface has these methods:
                         if (err) {
                             callback(err, null);
                         } else {
-                            results.sort(function(a, b) { 
+                            results.sort(function(a, b) {
                                 return a.created - b.created;
                             });
                             callback(null, results);
@@ -259,7 +259,7 @@ The databank interface has these methods:
   Finds all objects of type `type`. `onResult` is called one time
   for each result, with a single argument, the object that matches the
   criteria. Use a collector array if you want all the results in an array.
-  
+
   `onCompletion` takes one argument, a `DatabankError`. A search with
   no results will get a `NoSuchThingError`. I think this is the method
   most likely to elicit a `NotImplementedError`, since most key-value
@@ -276,7 +276,7 @@ The databank interface has these methods:
   Gets all the objects of type `type` with ids in the array
   `ids`. Results are an object mapping an id to the results. If an ID
   doesn't exist, the mapped value will be `null`.
-  
+
   This is kind of like calling `read` over and over, but if the driver
   supports multiple reads in one call, it can be much more performant.
 
@@ -291,7 +291,7 @@ These are special shims for integer values.
   Increments the integer value of `type` and `id` by
   one. `onCompletion` takes two params: an error, and the resulting
   integer value. If integer value doesn't yet exists, goes to 1.
-  
+
   Defaults to a `read` and an `update` or `create`, but drivers can
   override to do an atomic increment.
 
@@ -300,7 +300,7 @@ These are special shims for integer values.
   Increments the integer value of `type` and `id` by
   one. `onCompletion` takes two params: an error, and the resulting
   integer value. If integer value doesn't yet exists, goes to -1.
-  
+
   Defaults to a `read` and an `update` or `create`, but drivers can
   override to do an atomic decrement.
 
@@ -313,7 +313,7 @@ These are special shims for array values.
   Appends the value `toAppend` to the array at `type` and `id`.
   `onCompletion` takes one param: an error. If array doesn't yet
   exists, it becomes a single-element array.
-  
+
   Defaults to a `read` and an `update` or `create`, but drivers can
   override to do an atomic append.
 
@@ -334,7 +334,7 @@ These are special shims for array values.
 
   Defaults to read the whole array and pluck out the value, but some
   drivers might support atomic query of just one item.
-  
+
 * `slice(type, id, start, length, onCompletion)`
 
   Like `Array.slice()`, gets the sub-array starting at index `start`
@@ -364,7 +364,7 @@ This is a subclass of `Error` for stuff that went wrong with a
 `Databank`. Subclasses include:
 
 * `NotImplementedError`
-  
+
   That doesn't work (yet).
 
 * `NoSuchThingError`
@@ -386,11 +386,11 @@ This is a subclass of `Error` for stuff that went wrong with a
 * `NoSuchItemError`
 
   There's no item in that array with that value.
-  
+
 * `WrongTypeError`
 
   You tried to use one of the array operators on a non-array value.
-  
+
 # DatabankObject
 
 This is a utility class for objects you want to store in a
@@ -442,7 +442,7 @@ end, fires `callback` with a single `err` parameter.
 
 * `create(properties, callback)`
 
-Creates a new instance of class with `properties` and returns it to callback. 
+Creates a new instance of class with `properties` and returns it to callback.
 
 * `readAll(ids, callback)`
 
