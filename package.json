@@ -1,6 +1,6 @@
 {
     "name": "databank",
-    "version": "0.19.1",
+    "version": "0.19.2",
     "homepage": "http://github.com/e14n/databank",
     "engines": { "node": ">=0.6.x" },
     "author": "Evan Prodromou <evan@e14n.com>",
