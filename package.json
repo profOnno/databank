@@ -10,8 +10,7 @@
     "description": "Abstraction layer for JSON storage",
     "dependencies": {
         "vows": ">=0.7.x",
-        "step": "0.0.x",
-        "setimmediate": "1.0.x"
+        "step": "0.0.x"
     },
     "repository": { "type":  "git",
                     "url":   "http://github.com/e14n/databank.git" },
